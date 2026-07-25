@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +19,35 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
+        }
+        /* Language Selector Bar */
+        .lang-bar {
+            background-color: rgba(20, 23, 37, 0.9);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            padding: 12px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            gap: 15px;
+        }
+        .lang-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            cursor: pointer;
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .lang-btn.active {
+            color: var(--accent-gold);
+            background-color: rgba(226, 185, 108, 0.15);
+            font-weight: bold;
         }
         header {
             padding: 80px 20px;
@@ -80,60 +109,186 @@
         a:hover {
             opacity: 0.8;
         }
-        .btn {
-            display: inline-block;
-            background-color: var(--accent-gold);
-            color: var(--bg-color);
-            padding: 12px 24px;
-            border-radius: 24px;
-            font-weight: bold;
-            margin-top: 20px;
+        
+        /* Language display toggles */
+        [data-lang] {
+            display: none;
+        }
+        body.lang-zh-Hant [data-lang="zh-Hant"] {
+            display: block;
+        }
+        body.lang-zh-Hant span[data-lang="zh-Hant"] {
+            display: inline;
+        }
+        body.lang-zh-Hans [data-lang="zh-Hans"] {
+            display: block;
+        }
+        body.lang-zh-Hans span[data-lang="zh-Hans"] {
+            display: inline;
+        }
+        body.lang-en [data-lang="en"] {
+            display: block;
+        }
+        body.lang-en span[data-lang="en"] {
+            display: inline;
         }
     </style>
 </head>
-<body>
+<body class="lang-zh-Hans"> <!-- Default to Simplified Chinese -->
+
+    <div class="lang-bar">
+        <button class="lang-btn active" onclick="setLang('zh-Hans')">简体中文</button>
+        <button class="lang-btn" onclick="setLang('zh-Hant')">繁體中文</button>
+        <button class="lang-btn" onclick="setLang('en')">English</button>
+    </div>
 
     <header>
         <span class="badge">iOS & iPadOS App</span>
-        <h1>生活中道塔羅</h1>
-        <p class="subtitle">Middle Way Tarot — 108 Cards for Daily Reflection & Meditation</p>
-        <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;">
+        <!-- Header title -->
+        <h1 data-lang="zh-Hans">生活中道塔罗</h1>
+        <h1 data-lang="zh-Hant">生活中道塔羅</h1>
+        <h1 data-lang="en">Middle Way Tarot</h1>
+        
+        <!-- Header subtitle -->
+        <p class="subtitle" data-lang="zh-Hans">108张智慧牌・现代生活解忧与静心观照</p>
+        <p class="subtitle" data-lang="zh-Hant">108張智慧牌・現代生活解憂與靜心觀照</p>
+        <p class="subtitle" data-lang="en">108 Wisdom Cards for Daily Reflection & Meditation</p>
+        
+        <!-- Header description -->
+        <p style="color: var(--text-secondary); max-width: 650px; margin: 0 auto;" data-lang="zh-Hans">
+            融合龙树菩萨《中论》智慧与现代心理学，帮助您破除执着、息灭焦虑，重获心灵平衡。
+        </p>
+        <p style="color: var(--text-secondary); max-width: 650px; margin: 0 auto;" data-lang="zh-Hant">
             融合龍樹菩薩《中論》智慧與現代心理學，幫助您破除執著、息滅焦慮，重獲心靈平衡。
+        </p>
+        <p style="color: var(--text-secondary); max-width: 650px; margin: 0 auto;" data-lang="en">
+            Integrating the wisdom of Nagarjuna's Madhyamaka philosophy with modern psychology to help you release attachments, calm anxiety, and regain inner balance.
         </p>
     </header>
 
     <div class="container">
+        <!-- Core Features -->
         <div class="card">
-            <h2>✨ 核心特色 / Core Features</h2>
-            <ul>
-                <li><strong>108 張精美中道智慧牌</strong>：結合緣起、空性、中道與般若四大牌組，指引日常情境。</li>
-                <li><strong>二諦轉念日誌</strong>：分開記錄「世俗諦」積極應事與「勝義諦」心不黏著，體會心靈躍遷。</li>
-                <li><strong>八不思辨實驗室</strong>：透過互動式圖表，參透「不生不滅」、「不斷不常」的中道哲理。</li>
-                <li><strong>隨身靜修聲景</strong>：內建 432Hz 琉璃音、頌缽與夜雨聲，無時無刻安住當下。</li>
-            </ul>
+            <h2 data-lang="zh-Hans">✨ 核心特色</h2>
+            <h2 data-lang="zh-Hant">✨ 核心特色</h2>
+            <h2 data-lang="en">✨ Core Features</h2>
+            
+            <div data-lang="zh-Hans">
+                <ul>
+                    <li><strong>108张中道智慧牌</strong>：涵盖缘起、空性、中道与般若四大牌组，完美解答日常人际与生活疑惑。</li>
+                    <li><strong>二谛转念日志</strong>：分离记录「世俗谛」积极应事与「胜义谛」心不黏着，感受心境的深刻蜕变。</li>
+                    <li><strong>八不思辨实验室</strong>：通过交互式3D卡片，参透「不生不灭」、「不断不常」等离两边合中道真理。</li>
+                    <li><strong>沉浸式静修声景</strong>：内置 432Hz 琉璃音、静心颂钵与深山夜雨等原生合成音频，随时回归当下。</li>
+                </ul>
+            </div>
+            <div data-lang="zh-Hant">
+                <ul>
+                    <li><strong>108張中道智慧牌</strong>：涵蓋緣起、空性、中道與般若四大牌組，完美解答日常人際與生活疑惑。</li>
+                    <li><strong>二諦轉念日誌</strong>：分離記錄「世俗諦」積極應事與「勝義諦」心不黏著，感受心境的深刻蛻變。</li>
+                    <li><strong>八不思辨實驗室</strong>：透過交互式3D卡片，參透「不生不滅」、「不斷不常」等離兩邊合中道真理。</li>
+                    <li><strong>沉浸式靜修聲景</strong>：內建 432Hz 琉璃音、靜心頌缽與深山夜雨等原生合成音頻，隨時回歸當下。</li>
+                </ul>
+            </div>
+            <div data-lang="en">
+                <ul>
+                    <li><strong>108 Middle Way Wisdom Cards</strong>: Comprising four suits (Dependent Origination, Emptiness, Middle Way, Prajna) to guide you through interpersonal relations and life dilemmas.</li>
+                    <li><strong>Two-Truths Reflections Journal</strong>: Dual-track entry allowing you to write down your "Conventional Truth" (practical actions) and "Ultimate Truth" (non-attachment of mind) to witness spiritual growth.</li>
+                    <li><strong>8-Negations Lab</strong>: Interactive 3D flip card visualizations to help you ponder profound philosophies such as "No Birth, No Death" and "No Permanence, No Annihilation".</li>
+                    <li><strong>Meditation Soundscapes</strong>: Built-in native sound synthesizers producing 432Hz chime, singing bowls, and rainfall to anchor your focus and bring immediate peace.</li>
+                </ul>
+            </div>
         </div>
 
+        <!-- Support -->
         <div class="card">
-            <h2>📞 客戶支持與聯絡 / Support & Contact</h2>
-            <p>如果您在使用 App 過程中遇到任何問題、或有改進建議，歡迎隨時聯絡我們：</p>
-            <p><strong>Email:</strong> howly7777777@gmail.com</p>
-            <p><strong>Support Page:</strong> <a href="https://howly7777777-svg.github.io/middlewaytarot/">Middle Way Tarot Support</a></p>
+            <h2 data-lang="zh-Hans">📞 客户支持与联络</h2>
+            <h2 data-lang="zh-Hant">📞 客戶支持與聯絡</h2>
+            <h2 data-lang="en">📞 Support & Contact</h2>
+            
+            <p data-lang="zh-Hans">如果您在使用 App 过程中遇到任何问题，或有任何宝贵建议，欢迎随时联络我们：</p>
+            <p data-lang="zh-Hant">如果您在使用 App 過程中遇到任何問題，或有任何寶貴建議，歡迎隨時聯絡我們：</p>
+            <p data-lang="en">If you encounter any issues while using our application, or have any suggestions and feedback, please feel free to reach out to us:</p>
+            
+            <p><strong>Email:</strong> <a href="mailto:howly7777777@gmail.com">howly7777777@gmail.com</a></p>
+            <p>
+                <span data-lang="zh-Hans"><strong>官方网站：</strong></span>
+                <span data-lang="zh-Hant"><strong>官方網站：</strong></span>
+                <span data-lang="en"><strong>Official Site:</strong></span>
+                <a href="https://howly7777777-svg.github.io/middlewaytarot/">Middle Way Tarot Support</a>
+            </p>
         </div>
 
+        <!-- Links -->
         <div class="card">
-            <h2>📜 條款與政策 / Terms & Links</h2>
-            <p>請參閱下方我們的服務條款與隱私政策：</p>
+            <h2 data-lang="zh-Hans">📜 条款与链接</h2>
+            <h2 data-lang="zh-Hant">📜 條款與連結</h2>
+            <h2 data-lang="en">📜 Terms & Legal Links</h2>
+            
+            <p data-lang="zh-Hans">请参阅下方我们的隐保政策与服务条款：</p>
+            <p data-lang="zh-Hant">請參閱下方我們的隱私權保護政策與服務條款：</p>
+            <p data-lang="en">Please refer to our legal terms and privacy policies below:</p>
+            
             <ul>
-                <li><a href="privacy.html">隱私政策 (Privacy Policy)</a></li>
-                <li><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">標準 Apple EULA 使用條款 (Terms of Use)</a></li>
+                <li>
+                    <a href="privacy.html">
+                        <span data-lang="zh-Hans">隐私政策 (Privacy Policy)</span>
+                        <span data-lang="zh-Hant">隱私政策 (Privacy Policy)</span>
+                        <span data-lang="en">Privacy Policy</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">
+                        <span data-lang="zh-Hans">标准 Apple EULA 许可协议 (Terms of Use)</span>
+                        <span data-lang="zh-Hant">標準 Apple EULA 許可協議 (Terms of Use)</span>
+                        <span data-lang="en">Apple Standard EULA (Terms of Use)</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
 
     <footer>
         <p>&copy; 2026 Howly. All rights reserved.</p>
-        <p>Licensed Application End User License Agreement applies.</p>
+        <p data-lang="zh-Hans">Apple Standard Licensed Application End User License Agreement (EULA) 适用。</p>
+        <p data-lang="zh-Hant">Apple Standard Licensed Application End User License Agreement (EULA) 適用。</p>
+        <p data-lang="en">Apple Standard Licensed Application End User License Agreement (EULA) applies.</p>
     </footer>
 
+    <script>
+        function setLang(langCode) {
+            // Update body class
+            document.body.className = 'lang-' + langCode;
+            
+            // Update active button state
+            const buttons = document.querySelectorAll('.lang-btn');
+            buttons.forEach(btn => {
+                if (btn.getAttribute('onclick').includes(langCode)) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            
+            // Save preference to localStorage
+            localStorage.setItem('preferredLang', langCode);
+        }
+
+        // Auto detect language on load
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLang');
+            if (savedLang) {
+                setLang(savedLang);
+            } else {
+                const userLang = navigator.language || navigator.userLanguage;
+                if (userLang.includes('zh-Hant') || userLang.includes('zh-TW') || userLang.includes('zh-HK')) {
+                    setLang('zh-Hant');
+                } else if (userLang.includes('zh')) {
+                    setLang('zh-Hans');
+                } else {
+                    setLang('en');
+                }
+            }
+        });
+    </script>
 </body>
 </html>

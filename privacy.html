@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,12 +17,41 @@
             color: var(--text-primary);
             font-family: -apple-system, BlinkMacSystemFont, sans-serif;
             margin: 0;
-            padding: 40px 20px;
+            padding: 0;
             line-height: 1.6;
+        }
+        /* Language Selector Bar */
+        .lang-bar {
+            background-color: rgba(20, 23, 37, 0.9);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            padding: 12px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            gap: 15px;
+        }
+        .lang-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            cursor: pointer;
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .lang-btn.active {
+            color: var(--accent-gold);
+            background-color: rgba(226, 185, 108, 0.15);
+            font-weight: bold;
         }
         .container {
             max-width: 800px;
-            margin: 0 auto;
+            margin: 40px auto;
             background-color: var(--card-bg);
             padding: 40px;
             border-radius: 12px;
@@ -40,6 +69,7 @@
         }
         a {
             color: var(--accent-gold);
+            text-decoration: underline;
         }
         footer {
             margin-top: 40px;
@@ -47,43 +77,167 @@
             color: var(--text-secondary);
             font-size: 0.9rem;
         }
+
+        /* Language display toggles */
+        [data-lang] {
+            display: none;
+        }
+        body.lang-zh-Hant [data-lang="zh-Hant"] {
+            display: block;
+        }
+        body.lang-zh-Hant span[data-lang="zh-Hant"] {
+            display: inline;
+        }
+        body.lang-zh-Hans [data-lang="zh-Hans"] {
+            display: block;
+        }
+        body.lang-zh-Hans span[data-lang="zh-Hans"] {
+            display: inline;
+        }
+        body.lang-en [data-lang="en"] {
+            display: block;
+        }
+        body.lang-en span[data-lang="en"] {
+            display: inline;
+        }
     </style>
 </head>
-<body>
+<body class="lang-zh-Hans">
+
+    <div class="lang-bar">
+        <button class="lang-btn active" onclick="setLang('zh-Hans')">简体中文</button>
+        <button class="lang-btn" onclick="setLang('zh-Hant')">繁體中文</button>
+        <button class="lang-btn" onclick="setLang('en')">English</button>
+    </div>
 
     <div class="container">
-        <h1>隱私政策 / Privacy Policy</h1>
-        <p>最後更新日期：2026年7月25日</p>
-        
-        <p>感謝您選擇使用<strong>「生活中道塔羅」(Middle Way Tarot)</strong>（以下簡稱「本應用」）。我們非常重視您的隱私，並致力於保護您的個人數據。本隱私政策說明我們如何處理您的個人信息。</p>
+        <!-- SIMPLIFIED CHINESE PRIVACY POLICY -->
+        <div data-lang="zh-Hans">
+            <h1>隐私政策 / Privacy Policy</h1>
+            <p>最后更新日期：2026年7月25日</p>
+            
+            <p>感谢您选择使用<strong>「生活中道塔罗」(Middle Way Tarot)</strong>（以下简称「本应用」）。我们非常重视您的隐私，并致力于保护您的个人数据。本隐私政策说明我们如何处理您的个人信息。</p>
 
-        <h2>1. 數據收集與使用 / Data Collection & Use</h2>
-        <p>本應用致力於維護極簡與安全的隱私設計：</p>
-        <ul>
-            <li><strong>本機儲存</strong>：您的所有抽牌記錄、二諦轉念日誌（Journal Entries）以及靜坐設定均儲存在您的 iOS 設備本機（Local Storage）中。</li>
-            <li><strong>無伺服器收集</strong>：我們<strong>不會</strong>將您的日記內容、抽牌歷史上傳至任何外部伺服器。您的智慧歷程完全屬於您自己。</li>
-            <li><strong>通知權限</strong>：當您啟用每日提醒功能時，我們會使用設備本機的通知中心（UNUserNotificationCenter）來觸發定時提醒，此過程不需要網路傳輸，亦不會收集任何個人身份標識。</li>
-        </ul>
+            <h2>1. 数据收集与使用</h2>
+            <p>本应用致力于维护极简与安全的隐私设计：</p>
+            <ul>
+                <li><strong>本地储存</strong>：您的所有抽牌记录、二谛转念日志（Journal Entries）以及静坐设定均储存在您的 iOS 设备本地（Local Storage）中。</li>
+                <li><strong>无服务器收集</strong>：我们<strong>不会</strong>将您的日记内容、抽牌历史上传至任何外部服务器。您的智慧历程完全属于您自己。</li>
+                <li><strong>通知权限</strong>：当您启用每日提醒功能时，我们会使用设备本地的通知中心（UNUserNotificationCenter）来触发定时提醒，此过程不需要网络传输，亦不会收集任何个人身份标识。</li>
+            </ul>
 
-        <h2>2. 數據共享與第三方披露 / Data Sharing</h2>
-        <p>我們不會向任何第三方出售、交易或共享您的任何個人數據，因為我們不收集您的個人數據。</p>
+            <h2>2. 数据共享与第三方披露</h2>
+            <p>我们不会向任何第三方出售、交易或共享您的任何个人数据，因为我们不收集您的个人数据。</p>
 
-        <h2>3. 訂閱與支付數據 / Subscription & Payment</h2>
-        <p>本應用提供 VIP 方案訂閱，所有支付與訂閱手續均直接透過 Apple 的 App Store 內購系統（StoreKit 2）完成。我們不會收集、處理或儲存您的任何信用卡或支付資訊，所有付款流程與安全保障皆由 Apple 負責。</p>
+            <h2>3. 订阅与支付数据</h2>
+            <p>本应用提供 VIP 方案订阅，所有支付与订阅手续均直接通过 Apple 的 App Store 内购系统（StoreKit 2）完成。我们不会收集、处理或储存您的任何信用卡或支付资讯，所有付款流程与安全保障皆由 Apple 负责。</p>
 
-        <h2>4. 隱私政策的更新 / Policy Updates</h2>
-        <p>我們可能會不定期更新此隱私政策。任何變更都會在此頁面上發佈。建議您定期查看以獲取最新政策。</p>
+            <h2>4. 隐私政策的更新</h2>
+            <p>我们可能会不定期更新此隐私政策。任何变更都会在此页面上发布。建议您定期查看以获取最新政策。</p>
 
-        <h2>5. 聯絡我們 / Contact Us</h2>
-        <p>如果您對本隱私政策有任何疑問，請透過以下郵箱與我們聯絡：</p>
-        <p><strong>Email:</strong> howly7777777@gmail.com</p>
+            <h2>5. 联络我们</h2>
+            <p>如果您对本隐私政策有任何疑问，请通过以下邮箱与我们联络：</p>
+            <p><strong>Email:</strong> <a href="mailto:howly7777777@gmail.com">howly7777777@gmail.com</a></p>
 
-        <p><a href="index.html">返回首頁 (Back to Homepage)</a></p>
+            <p><a href="index.html">返回首页 (Back to Homepage)</a></p>
+        </div>
+
+        <!-- TRADITIONAL CHINESE PRIVACY POLICY -->
+        <div data-lang="zh-Hant">
+            <h1>隱私政策 / Privacy Policy</h1>
+            <p>最後更新日期：2026年7月25日</p>
+            
+            <p>感謝您選擇使用<strong>「生活中道塔羅」(Middle Way Tarot)</strong>（以下簡稱「本應用」）。我們非常重視您的隱私，並致力於保護您的個人數據。本隱私政策說明我們如何處理您的個人信息。</p>
+
+            <h2>1. 數據收集與使用</h2>
+            <p>本應用致力於維護極簡與安全的隱私設計：</p>
+            <ul>
+                <li><strong>本機儲存</strong>：您的所有抽牌記錄、二諦轉念日誌（Journal Entries）以及靜坐設定均儲存在您的 iOS 設備本機（Local Storage）中。</li>
+                <li><strong>無伺服器收集</strong>：我們<strong>不會</strong>將您的日記內容、抽牌歷史上傳至任何外部伺服器。您的智慧歷程完全屬於您自己。</li>
+                <li><strong>通知權限</strong>：當您啟用每日提醒功能時，我們會使用設備本機的通知中心（UNUserNotificationCenter）來觸發定時提醒，此過程不需要網路傳輸，亦不會收集任何個人身份標識。</li>
+            </ul>
+
+            <h2>2. 數據共享與第三方披露</h2>
+            <p>我們不會向任何第三方出售、交易或共享您的任何個人數據，因為我們不收集您的個人數據。</p>
+
+            <h2>3. 訂閱與支付數據</h2>
+            <p>本應用提供 VIP 方案訂閱，所有支付與訂閱手續均直接透過 Apple 的 App Store 內購系統（StoreKit 2）完成。我們不會收集、處理或儲存您的任何信用卡或支付資訊，所有付款流程與安全保障皆由 Apple 負責。</p>
+
+            <h2>4. 隱私政策的更新</h2>
+            <p>我們可能會不定期更新此隱私政策。任何變更都會在此頁面上發佈。建議您定期查看以獲取最新政策。</p>
+
+            <h2>5. 聯絡我們</h2>
+            <p>如果您對本隱私政策有任何疑問，請透過以下郵箱與我們聯絡：</p>
+            <p><strong>Email:</strong> <a href="mailto:howly7777777@gmail.com">howly7777777@gmail.com</a></p>
+
+            <p><a href="index.html">返回首頁 (Back to Homepage)</a></p>
+        </div>
+
+        <!-- ENGLISH PRIVACY POLICY -->
+        <div data-lang="en">
+            <h1>Privacy Policy</h1>
+            <p>Last Updated: July 25, 2026</p>
+            
+            <p>Thank you for choosing to use <strong>"Middle Way Tarot"</strong> (hereinafter referred to as "the Application"). We highly value your privacy and are committed to protecting your personal data. This privacy policy explains how we handle your information.</p>
+
+            <h2>1. Data Collection and Use</h2>
+            <p>The Application is designed around strict privacy-first and minimalist principles:</p>
+            <ul>
+                <li><strong>Local Storage</strong>: All of your card draw records, Two-Truths reflection journal entries, and meditation configurations are saved locally on your iOS device.</li>
+                <li><strong>No Server Uploads</strong>: We <strong>do not</strong> transmit or store your journal entries, card draw histories, or personal notes to any external servers. Your spiritual reflections remain completely private.</li>
+                <li><strong>Push Notifications</strong>: When you enable daily reminder settings, we trigger them locally using iOS's native notification center (UNUserNotificationCenter). This process is fully offline and does not harvest any identifier data.</li>
+            </ul>
+
+            <h2>2. Data Sharing and Third-Party Disclosures</h2>
+            <p>We do not sell, trade, or share any personal data with third parties simply because we do not collect or possess any personal data.</p>
+
+            <h2>3. Subscriptions & Payment Data</h2>
+            <p>The Application offers premium VIP subscription tiers. All payments and subscriptions are processed directly through Apple's App Store purchasing system (StoreKit 2). We do not collect, process, or store credit cards, billing addresses, or transaction histories; all payment processes are securely managed by Apple.</p>
+
+            <h2>4. Changes to This Privacy Policy</h2>
+            <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this page periodically for any changes.</p>
+
+            <h2>5. Contact Us</h2>
+            <p>If you have any questions or feedback regarding this Privacy Policy, please contact us at:</p>
+            <p><strong>Email:</strong> <a href="mailto:howly7777777@gmail.com">howly7777777@gmail.com</a></p>
+
+            <p><a href="index.html">Back to Homepage</a></p>
+        </div>
     </div>
 
     <footer>
         <p>&copy; 2026 Howly. All rights reserved.</p>
     </footer>
 
+    <script>
+        function setLang(langCode) {
+            document.body.className = 'lang-' + langCode;
+            const buttons = document.querySelectorAll('.lang-btn');
+            buttons.forEach(btn => {
+                if (btn.getAttribute('onclick').includes(langCode)) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            localStorage.setItem('preferredLang', langCode);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLang');
+            if (savedLang) {
+                setLang(savedLang);
+            } else {
+                const userLang = navigator.language || navigator.userLanguage;
+                if (userLang.includes('zh-Hant') || userLang.includes('zh-TW') || userLang.includes('zh-HK')) {
+                    setLang('zh-Hant');
+                } else if (userLang.includes('zh')) {
+                    setLang('zh-Hans');
+                } else {
+                    setLang('en');
+                }
+            }
+        });
+    </script>
 </body>
 </html>
